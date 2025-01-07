@@ -1,0 +1,40 @@
+
+package components
+
+import (
+    "RolandQuest/internal/localfiles"
+)
+
+templ DirectoryView(path string, mediaType localfiles.MediaType) {
+    <div>
+        <ul class="list-none">
+            for _, entry := range localfiles.GetMediaDirectory(mediaType, path) {
+                @dir_entry_view(path, entry.Name(), entry.IsDir()) 
+            }
+        </ul>
+    </div>
+}
+
+templ dir_entry_view(path string, name string, isdir bool) {
+    <li>
+        if isdir {
+            <a class="flex" href={ templ.URL("/videolist" + path + "/" + name) }>
+                <span class="mr-2">
+                    @SVG_Folder()
+                </span>
+                <span>{name}</span>
+            </a>
+        } else {
+            <a class="flex" href={ templ.URL("/player/" + name) }>
+                <span class="mr-2">
+                    @SVG_File()
+                </span>
+                <span>{name}</span>
+            </a>
+        }
+    </li>
+}
+
+func get_string(name string) string {
+    return "/player/" + name
+}

@@ -1,0 +1,13 @@
+package pages
+
+import (
+    "RolandQuest/internal/views/components"
+)
+
+templ Player(videoPath string) {
+    @components.HTML_Template() {
+            <body class="flex flex-col items-center">
+                @components.VideoPlayer(videoPath)
+            </body>
+        }
+}

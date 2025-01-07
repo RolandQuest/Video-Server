@@ -1,0 +1,9 @@
+.env
+ffmpeg_cmds.txt
+test-priv-key.pem
+test-serv-key.pem
+tmp/
+internal/views/components/*.go
+internal/views/components/*.txt
+internal/views/pages/*.go
+internal/views/pages/*.txt

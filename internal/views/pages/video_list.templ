@@ -1,0 +1,18 @@
+
+package pages
+
+import (
+    "RolandQuest/internal/views/components"
+    "RolandQuest/internal/localfiles"
+)
+
+templ VideoList(path string) {
+    @components.HTML_Template() {
+        <body class="flex flex-col items-center">
+            <div class="flex flex-col items-center">
+                @components.BreadCrumbs(path)
+                @components.DirectoryView(path, localfiles.Movies)
+            </div>
+        </body>
+    }
+}

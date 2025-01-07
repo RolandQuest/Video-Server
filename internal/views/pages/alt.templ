@@ -1,0 +1,51 @@
+
+package pages
+
+import (
+    "RolandQuest/internal/views/components"
+    "RolandQuest/internal/database"
+)
+
+templ AltMain(allSeries []VideoDatabase.Series) {
+    @components.HTML_Template() {
+        
+        <style>
+            ul>li>ul {
+                display: none;
+            }
+        </style>
+        
+        <body class="flex flex-col items-center">
+            
+            <ul id="expList">
+            for _, series := range allSeries {
+                <li>
+                    {series.Name}
+                    <ul>
+                    for _, season := range series.Seasons {
+                        <li>
+                            {season.Name}
+                            <ul>
+                            for _, episode := range season.Videos {
+                                <li>{episode.Title}</li>
+                            }
+                            </ul>
+                        </li>
+                    }
+                    </ul>
+                </li>
+            }
+            </ul>
+            
+            // for _, name := range seriesNames {
+            //     <a href={ templ.SafeURL(fmt.Sprintf("alt/%s", name)) }>{name}</a>
+            // }
+                    <script>
+document.querySelectorAll('li').forEach(function(listItem){ listItem.addEventListener('click', function(e){ e.stopPropagation(); let firstUl = this.getElementsByTagName("ul")[0]; if(firstUl.style.display === "block") { firstUl.style.display = "none"; } else { let firstChild = this.children[0]; if(firstChild.tagName === "UL") { firstChild.style.display = "block"; } } }); });
+        </script>
+            
+            
+        </body>
+        
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Templ Watch Party",
+            "type": "shell",
+            "command": "templ generate --watch --proxy=http://localhost:8000",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Templ Build",
+            "type": "shell",
+            "command": "templ generate",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Tailwind Watch Party",
+            "type": "shell",
+            "command": "npx tailwindcss -i ./internal/views/css/app.css -o ./public/styles.css --watch",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Tailwind Build",
+            "type": "shell",
+            "command": "npx tailwindcss -i ./internal/views/css/app.css -o ./public/styles.css",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Air Watch Party",
+            "command": "air",
+            "args": [ ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Watch Party!",
+            "dependsOn": [
+                "Templ Watch Party",
+                "Tailwind Watch Party",
+                "Air Watch Party"
+            ]
+        },
+        {
+            "label": "Build Production",
+            "command": "go build -o ./bin/main.exe .",
+            "dependsOn": [ "Templ Build", "Tailwind Build" ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        }
+    ]
+}

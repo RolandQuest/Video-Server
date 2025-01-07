@@ -1,0 +1,17 @@
+
+package components
+
+templ HTML_Template() {
+    <!DOCTYPE html>
+    <html lang="en" data-theme="dark">
+    <head>
+        <title>RolandQuest</title>
+        <meta charset="UTF-8" />
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+        <script defer src="public/rq_wc_import.js"></script>
+        <link rel="icon" type="image/x-icon" href="/public/favicon-32x32.png"/>
+        <link rel="stylesheet" href="/public/styles.css"/>
+    </head>
+        { children... }
+    </html>
+}
